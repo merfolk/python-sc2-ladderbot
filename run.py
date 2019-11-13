@@ -4,7 +4,6 @@ import os
 import random
 
 import sc2
-from __init__ import run_ladder_game
 from sc2 import Race, Difficulty
 from sc2.player import Bot, Computer
 from sc2.paths import Paths
@@ -32,32 +31,22 @@ def get_random_map_name() -> str:
     return random.choice(list(map_file_names))
 
 
-# Start game
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        description="Run a Starcraft 2 bot game."
+        description="Run a local Starcraft 2 bot game."
     )
-    parser.add_argument("--LadderServer", help="Run a game with SC2 Ladder Manager. Otherwise a local game game will "
-                                               "be run.", action="store_true")
     parser.add_argument("-rt", "--real-time", help="Use real-time mode. Otherwise games will be run as fast as "
                                                    "possible.", action="store_true")
 
     args = parser.parse_args()
 
-    if args.LadderServer:
-        # Ladder game started by LadderManager
-        print("Starting ladder game...")
-        result, opponent_id = run_ladder_game(bot)
-        print(result, " against opponent ", opponent_id)
-    else:
-        # Local game
-        print("Starting local game...")
+    print("Starting local game...")
 
-        map_name = get_random_map_name()
-        print(f"Using map {map_name}")
+    map_name = get_random_map_name()
+    print(f"Using map {map_name}")
 
-        sc2.run_game(sc2.maps.get(map_name), [
-            bot,
-            Computer(Race.Protoss, Difficulty.VeryHard)
-        ], realtime=args.real_time)
+    sc2.run_game(sc2.maps.get(map_name), [
+        bot,
+        Computer(Race.Protoss, Difficulty.VeryHard)
+    ], realtime=args.real_time)

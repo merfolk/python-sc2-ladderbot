@@ -1,10 +1,11 @@
 {
   "Bots": {
-    "example_bot": {
-      "Race": "Protoss",
+    "LadderBot": {
+      "Race": "Terran",
       "Type": "Python",
       "RootPath": "./",
-      "FileName": "run_ladder.py"
+      "FileName": "run_ladder.py",
+      "Debug": false
     }
   }
 }

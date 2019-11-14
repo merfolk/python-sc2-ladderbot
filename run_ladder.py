@@ -1,7 +1,10 @@
+from sc2 import Race
+from sc2.player import Bot
+
 from __init__ import run_ladder_game
 from example_bot import ExampleBot
 
-bot = ExampleBot()
+bot = Bot(Race.Terran, ExampleBot())
 
 
 def main():

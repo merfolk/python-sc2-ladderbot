@@ -10,7 +10,7 @@ from sc2.paths import Paths
 
 # Load bot
 from example_bot import ExampleBot
-bot = Bot(Race.Random, ExampleBot())
+bot = Bot(Race.Terran, ExampleBot())
 
 
 def get_random_map_name() -> str:

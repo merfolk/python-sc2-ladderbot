@@ -19,6 +19,8 @@ from sc2.protocol import ConnectionAlreadyClosed
 # This lets python-sc2 connect to a LadderManager game: https://github.com/Cryptyc/Sc2LadderServer
 # Based on: https://github.com/Dentosal/python-sc2/blob/master/examples/run_external.py
 def run_ladder_game(bot):
+    assert isinstance(bot, Bot)
+
     # Load command line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--GamePort', type=int, nargs="?", help='Game port')
